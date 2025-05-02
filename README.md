@@ -1,59 +1,25 @@
-# DriveThru
+# “Drive-Thru Lane Visualizer”
+- Implemented *json-server* for creating API
+- API integration with `httpClient` at 
+  GET->http://localhost:3000/api/lanes/1 & http://localhost:3000/api/lanes/2
+- Implemented Catching to reduce Multiple API calls
+- `npm start` launches both app & json-server. I have used concurrently package to run both at a time.
+- To avoid CORS issue add extension of CORS in our browser and enable it.
+- To run server run the command - npm run json:server
+- Lanes fit to that content no scroll bars and given 5% marging to svg
+- Used Polyline and SVG to draw the line connecting XY Coordinates
+- Labels are displayed only for vertexType SERVICE_POINT
+- Differented vertexType based on colors
+- To Switch between lines Select the Options in DropDown
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+# Angular Best Practices
+- Used @angular-eslint/schematics for linting
+- To check npm run lint
 
-## Development server
 
-To start a local development server, run:
+# Tech stack
+- Angular(19.2.0)
+- node(22.14.0)
+- npm(11.3.0)
+- Json-server(0.17.4)
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
