@@ -15,6 +15,8 @@
 # Angular Best Practices
 - Used @angular-eslint/schematics for linting
 - To check npm run lint
+- Catching data of mock api's
+- Unit testing
 
 
 # Tech stack
@@ -22,4 +24,7 @@
 - node(22.14.0)
 - npm(11.3.0)
 - Json-server(0.17.4)
-
+- rxjs(7.8.0)
+- eslint(9.23.0)
+- SVG
+- Unit Testing(Jasmine+Karma)

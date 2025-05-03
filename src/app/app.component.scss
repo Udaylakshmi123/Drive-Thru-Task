@@ -1,10 +1,10 @@
 .svgBox{
-  width: 90%;
+  width: auto;
   margin: 5%;
 }
 svg {
     border: 1px solid black;
-    max-width: 80vw;
+    min-width: 80vw;
     max-height: 70vh;
   }
   .animated-path {
