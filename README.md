@@ -28,3 +28,5 @@
 - eslint(9.23.0)
 - SVG
 - Unit Testing(Jasmine+Karma)
+
+  Document ::[Drive-Thru-Lane-Visualizer.docx](https://github.com/user-attachments/files/20022797/Drive-Thru-Lane-Visualizer.docx)
