@@ -69,11 +69,11 @@ export class AppComponent implements OnInit{
   }
 
   getLabelOffsetX(): number {
-    return 10;
+    return 20;
   }
 
   getLabelOffsetY(): number {
-    return -10;
+    return -20;
   }
   getPolylinePoints(path: { x: number, y: number }[]): string {
     return path.map(p => `${this.transformXY(p.x)},${this.transformXY(p.y)}`).join(' ');

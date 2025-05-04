@@ -10,7 +10,7 @@
     <polyline
       [attr.points]="path.points"
       [attr.stroke]="path.color"
-      stroke-width="2.5"
+      stroke-width="35"
       fill="none"
       class="animated-path"></polyline>
     }
@@ -22,7 +22,7 @@
         [attr.cx]="vertex.location.coordinates[0] * scale"
         [attr.cy]="vertex.location.coordinates[1] * scale"
         [attr.fill]="getVertexColor(vertex.vertexType)"
-        r="6"></circle>
+        r="20"></circle>
         <!-- text for displaying text on circle -->
       @if (vertex.vertexType === 'SERVICE_POINT') {
       <text
