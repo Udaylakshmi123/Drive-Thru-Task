@@ -14,8 +14,7 @@ export class AppComponent implements OnInit{
   lanes = getLanesData();
   vertices: Vertex[] = [];
   paths: { points: string; color: string }[] = [];
-  scale = 20; 
-  private offsetXY = 20;
+  scale = 25;
 
   constructor(private apiService: ApiService) {}
 
@@ -29,7 +28,7 @@ export class AppComponent implements OnInit{
       this.generatePaths();
     });
   }
-  
+  // creating from(XY) & to(XY) coordinates to form a Polyline
   generatePaths(): void {
     this.paths=[];
     const vertexMap = new Map<number, Vertex>();
@@ -75,13 +74,5 @@ export class AppComponent implements OnInit{
   getLabelOffsetY(): number {
     return -20;
   }
-  getPolylinePoints(path: { x: number, y: number }[]): string {
-    return path.map(p => `${this.transformXY(p.x)},${this.transformXY(p.y)}`).join(' ');
-  }
-  transformXY(x: number): number {
-    return x * this.scale + this.offsetXY;
-  }
-
-
 }
 

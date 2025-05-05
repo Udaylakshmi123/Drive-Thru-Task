@@ -4,7 +4,7 @@
   }
 </select>
 <div class="svgBox">
-  <svg viewBox="0 0 850 390">
+  <svg viewBox="0 0 900 400" preserveAspectRatio="xMidYMid meet">
     <!-- To Draw Path -->
     @for (path of paths; track path) {
     <polyline
@@ -17,13 +17,13 @@
     <!-- Draw vertices -->
     <g>
       @for (vertex of vertices; track vertex) {
-        <!-- creating circle based on vertex points -->
+      <!-- creating circle based on vertex points -->
       <circle
         [attr.cx]="vertex.location.coordinates[0] * scale"
         [attr.cy]="vertex.location.coordinates[1] * scale"
         [attr.fill]="getVertexColor(vertex.vertexType)"
         r="20"></circle>
-        <!-- text for displaying text on circle -->
+      <!-- text for displaying text on circle -->
       @if (vertex.vertexType === 'SERVICE_POINT') {
       <text
         [attr.x]="vertex.location.coordinates[0] * scale + getLabelOffsetX()"

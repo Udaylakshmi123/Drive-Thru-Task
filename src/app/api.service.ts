@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap, shareReplay } from 'rxjs/operators';
+import { shareReplay } from 'rxjs/operators';
 import { Lanes } from '../../constants';
 
 @Injectable({ providedIn: 'root' })
@@ -13,34 +13,15 @@ export class ApiService {
   get(url: string, params:number): Observable<Lanes> {
     const cacheKey = this.createCacheKey(url, params);
 
+    //  return response for existing catched request url matches
     if (this.requestCache.has(cacheKey)) {
-      return this.requestCache.get(cacheKey)!; // ✅ Return cached observable
+      return this.requestCache.get(cacheKey)!;
     }
 
-    const request$ = this.http.get<Lanes>(cacheKey).pipe(
-      shareReplay(1), // ✅ Share result with multiple subscribers
-      tap({
-        error: () => {
-          this.requestCache.delete(cacheKey); // ❌ Clear cache on failure
-        }
-      })
-    );
+    const request$ = this.http.get<Lanes>(cacheKey).pipe(shareReplay(1));
 
-    this.requestCache.set(cacheKey, request$); // Cache the request
+    this.requestCache.set(cacheKey, request$); // Cache the request & response
     return request$;
-  }
-
-  // Clear a specific cache or all
-  clearCache(url?: string): void {
-    if (url) {
-      for (const key of this.requestCache.keys()) {
-        if (key.startsWith(url)) {
-          this.requestCache.delete(key);
-        }
-      }
-    } else {
-      this.requestCache.clear();
-    }
   }
 
   private createCacheKey(url: string, params: number): string {
