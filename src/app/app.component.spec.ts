@@ -4,6 +4,7 @@ import { ApiService } from './api.service';
 import { of } from 'rxjs';
 import { Lanes, mockLanesData } from '../../constants';
 import { FormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -16,7 +17,7 @@ describe('AppComponent', () => {
     mockApiService.get.and.returnValue(of(mockLaneData));
 
     await TestBed.configureTestingModule({
-      imports: [AppComponent, FormsModule],
+      imports: [AppComponent, FormsModule,MatSnackBarModule],
       providers: [{ provide: ApiService, useValue: mockApiService }],
     }).compileComponents();
 

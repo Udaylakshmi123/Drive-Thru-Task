@@ -2,10 +2,11 @@ import { Component,OnInit } from '@angular/core';
 import { ApiService } from './api.service';
 import {reqUrl,Vertex,getLanesData,Lanes} from '../../constants';
 import { FormsModule } from '@angular/forms';
+import {MatSnackBarModule,MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule],
+  imports: [FormsModule,MatSnackBarModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -16,17 +17,19 @@ export class AppComponent implements OnInit{
   paths: { points: string; color: string }[] = [];
   scale = 25;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private snackBar: MatSnackBar) {}
 
   ngOnInit(){
     this.onSelectionChange()
   }
   // based on select lane change respective lane generated
   onSelectionChange(){
-    this.apiService.get(reqUrl,Number(this.selectedValue)).subscribe((response:Lanes) => {
+    this.apiService.get(reqUrl,Number(this.selectedValue)).subscribe({next: (response:Lanes) => {
       this.vertices=response.data.vertices;
       this.generatePaths();
-    });
+    }, error: ()=>{
+      this.snackBar.open('Something Went Wrong', 'Close', { duration: 3000 })
+    }});
   }
   // creating from(XY) & to(XY) coordinates to form a Polyline
   generatePaths(): void {
