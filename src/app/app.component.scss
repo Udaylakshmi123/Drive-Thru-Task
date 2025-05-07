@@ -1,11 +1,14 @@
+select {
+  margin: 8px 0px 0px 8px;
+}
 .svgBox {
-  width: auto;
-  margin: 5%;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  position: relative;
 }
 svg {
-  border: 1px solid black;
-  min-width: 85vw;
-  max-height: 70vh;
+  margin: 5%;
 }
 .animated-path {
   stroke-dasharray: 1000;
